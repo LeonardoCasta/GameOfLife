@@ -3,8 +3,8 @@
 #include "raylib.h"
 #include "raymath.h"
 
-#define CELLSIZE 20
-#define CELLNUMBER 30
+#define CELLSIZE 30
+#define CELLNUMBER 40
 #define GRID_DIMENTION (CELLSIZE*CELLNUMBER)
 #define BOTTOM 80
 #define BUTTON_HEIGHT 60
@@ -143,7 +143,7 @@ void SetState(Cell (*grid)[CELLNUMBER], int i, int j){
 void ManageCells(Cell* cell){                                                                                                                                                                                                                       
     Vector2 mousePoint = GetMousePosition();                                                                                                                                                                                                            
                                                                                                                                                                                                                                                         
-    //change color if mouse over button                                                                                                                                                                                                             
+    //change color if mouse over button                                                                                                                                                                                   
     int isReleased = false;                                                                                                                                                                                                                         
     if (CheckCollisionPointRec(mousePoint, (cell)->rect)){                                                                                                                                                                                        
         cell->color = GRAY;                                                                                                                                                                                                                               
@@ -189,6 +189,7 @@ void DrawGridR(Cell (*grid)[CELLNUMBER]){
 
 int main(void)
 {
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(GRID_DIMENTION, GRID_DIMENTION+BOTTOM, "Game of Life");
     SetTargetFPS(20);
     
@@ -208,6 +209,7 @@ int main(void)
 
     while (!WindowShouldClose())
     {
+	
         BeginDrawing();
             switch (state)
             {
